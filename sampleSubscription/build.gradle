@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:7.0.1'
+
+	implementation "com.graphql-java-kickstart:graphql-java-tools:6.0.2"
+
+	// to embed Altair tool
+	runtimeOnly 'com.graphql-java-kickstart:altair-spring-boot-starter:7.0.1'
+
+	// to embed GraphiQL tool
+	runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:7.0.1'
+
+	// to embed playground tool
+	runtimeOnly 'com.graphql-java-kickstart:playground-spring-boot-starter:7.0.1'
+
+	compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.9.RELEASE'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,6 @@
+sources:
+  - name: sampleSubscriptionAPI
+    handler:
+      graphql:
+        endpoint: http://localhost:9999/graphql
+        enableSubscriptions: true
